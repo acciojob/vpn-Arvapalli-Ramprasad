@@ -25,6 +25,7 @@ public class ServiceProvider {
     List<Connection> connectionList;
 
     public ServiceProvider() {
+
     }
 
     public ServiceProvider(String name) {

@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(String username, String password, String countryName) throws Exception{
-
         // Convert the countryName string to the CountryName enum
         CountryName countryNameEnum = CountryName.valueOf(countryName.toUpperCase());
 
@@ -44,7 +43,7 @@ public class UserServiceImpl implements UserService {
         serviceProvider.getUsers().add(user);
         serviceProviderRepository3.save(serviceProvider);
         user.getServiceProviderList().add(serviceProvider);
-        userRepository3.save(user);
+        user = userRepository3.save(user);
         return user;
     }
 }
