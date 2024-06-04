@@ -29,6 +29,7 @@ public class ConnectionController {
     public ResponseEntity<User> disconnect(@RequestParam int userId) throws Exception{
         //If the given user was not connected to a vpn, throw "Already disconnected" exception.
         //Else, disconnect from vpn, make masked Ip as null, update relevant attributes and return updated user.
+
         User user = connectionService.disconnect(userId);
         return new ResponseEntity<>(user,HttpStatus.OK);
     }

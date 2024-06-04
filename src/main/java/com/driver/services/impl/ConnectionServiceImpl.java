@@ -43,6 +43,7 @@ public class ConnectionServiceImpl implements ConnectionService {
                     user.setMaskedIp(countryCode);
                     user.setConnected(Boolean.TRUE);
                     user = userRepository2.save(user);
+                    connectionRepository2.save(connection);
                     return user;
                 }
             }
@@ -52,8 +53,17 @@ public class ConnectionServiceImpl implements ConnectionService {
     }
     @Override
     public User disconnect(int userId) throws Exception {
-
-        return null;
+        if(connectionRepository2.findById(userId)==null){
+            throw new Exception("Already disconnected");
+        }
+        else {
+            Connection connection = connectionRepository2.findById(userId).get();
+            User user = connection.getUser();
+            user.setConnected(Boolean.FALSE);
+            user.setMaskedIp(null);
+            user = userRepository2.save(user);
+            return user;
+        }
     }
     @Override
     public User communicate(int senderId, int receiverId) throws Exception {
