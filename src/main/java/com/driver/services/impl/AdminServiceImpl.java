@@ -1,5 +1,6 @@
 package com.driver.services.impl;
 
+import com.driver.model.Admin;
 import com.driver.repository.AdminRepository;
 import com.driver.repository.CountryRepository;
 import com.driver.repository.ServiceProviderRepository;
@@ -20,13 +21,16 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin register(String username, String password) {
+        Admin admin = new Admin(username,password);
+        admin = adminRepository1.save(admin);
+        return admin;
     }
-
-    @Override
-    public Admin addServiceProvider(int adminId, String providerName) {
-    }
-
-    @Override
-    public ServiceProvider addCountry(int serviceProviderId, String countryName) throws Exception{
-    }
+//
+//    @Override
+//    public Admin addServiceProvider(int adminId, String providerName) {
+//    }
+//
+//    @Override
+//    public ServiceProvider addCountry(int serviceProviderId, String countryName) throws Exception{
+//    }
 }
