@@ -12,13 +12,18 @@ public class Admin {
     private String username;
     private String password;
 
+
+
+    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
+    List<ServiceProvider> serviceProviders;
+
     public Admin(String username,String password) {
         this.username = username;
         this.password = password;
     }
 
-    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
-    List<ServiceProvider> serviceProviders;
+    public Admin() {
+    }
 
     public int getId() {
         return id;

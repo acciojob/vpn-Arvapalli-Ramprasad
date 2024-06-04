@@ -21,6 +21,10 @@ public class Country {
     @ManyToOne
     ServiceProvider serviceProvider;
 
+
+    public Country() {
+    }
+
     public Country(CountryName countryName, String code, User user, ServiceProvider serviceProvider) {
         this.countryName = countryName;
         this.code = code;
