@@ -24,8 +24,7 @@ public class ServiceProvider {
     @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
     List<Connection> connectionList;
 
-    public ServiceProvider(int id, String name) {
-        this.id = id;
+    public ServiceProvider(String name) {
         this.name = name;
     }
 
