@@ -1,5 +1,6 @@
 package com.driver.services.impl;
 
+import com.driver.model.CountryName;
 import com.driver.model.User;
 import com.driver.repository.CountryRepository;
 import com.driver.repository.ServiceProviderRepository;
@@ -20,7 +21,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(String username, String password, String countryName) throws Exception{
-        return null;
+
+        // Convert the countryName string to the CountryName enum
+        CountryName countryNameEnum = CountryName.valueOf(countryName.toUpperCase());
+
+        // Retrieve the code from the enum
+        String countryCode = countryNameEnum.getCode();
+
+
+        User user = new User(username,password,countryCode,false,null);
+
+        user = userRepository3.save(user);
+
+        return user;
     }
 
     @Override

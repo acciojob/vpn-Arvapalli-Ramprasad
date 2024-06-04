@@ -25,6 +25,17 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Connection> connectionList;
 
+    public User() {
+    }
+
+    public User(String username, String password, String originalIp, Boolean connected, String maskedIp) {
+        this.username = username;
+        this.password = password;
+        this.originalIp = originalIp;
+        this.connected = connected;
+        this.maskedIp = maskedIp;
+    }
+
     public int getId() {
         return id;
     }
